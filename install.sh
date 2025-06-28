@@ -22,6 +22,12 @@ create_link() {
     ln -s -v "$src" "$dest"
 }
 
+install_tmux_plugin_manager() {
+    if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
+    fi
+}
+
 if [ ! -d "$df" ]; then
     mkdir -p "$df" 
 fi
@@ -30,6 +36,7 @@ install_config "$nvim"
 install_config "$tmux"
 
 mkdir -p "$HOME/.config/nvim"
+install_tmux_plugin_manager
 
 create_link "$df/$nvim" "$HOME/.config/nvim/$nvim"
 create_link "$df/$tmux" "$HOME/$tmux"
