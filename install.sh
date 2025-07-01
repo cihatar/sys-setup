@@ -2,6 +2,7 @@
 
 df="$HOME/dotfiles"
 
+vim=".vimrc"
 nvim="init.lua"
 tmux=".tmux.conf"
 
@@ -22,6 +23,13 @@ create_link() {
     ln -s -v "$src" "$dest"
 }
 
+install_vim_plugin_manager() {
+    if [ ! -d "$HOME/.vim/autoload/plug.vim" ]; then
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim &>/dev/null
+    fi
+}
+
 install_tmux_plugin_manager() {
     if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
@@ -32,12 +40,15 @@ if [ ! -d "$df" ]; then
     mkdir -p "$df" 
 fi
 
+install_config "$vim"
 install_config "$nvim"
 install_config "$tmux"
 
 mkdir -p "$HOME/.config/nvim"
+install_vim_plugin_manager
 install_tmux_plugin_manager
 
+create_link "$df/$vim" "$HOME/$vim"
 create_link "$df/$nvim" "$HOME/.config/nvim/$nvim"
 create_link "$df/$tmux" "$HOME/$tmux"
 
