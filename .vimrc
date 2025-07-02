@@ -1,6 +1,7 @@
 set nocompatible
 filetype on
 syntax on
+set mouse=a
 set number
 set cursorline
 set shiftwidth=4
@@ -8,6 +9,8 @@ set tabstop=4
 set expandtab
 set history=1000
 set nobackup
+set nowritebackup
+set noswapfile
 set updatetime=300
 set noerrorbells
 set visualbell
@@ -32,6 +35,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'tpope/vim-commentary'
+
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
