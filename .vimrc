@@ -4,17 +4,22 @@ syntax on
 set mouse=a
 set number
 set cursorline
+set hidden
 set shiftwidth=4
 set tabstop=4
 set expandtab
 set history=1000
 set nobackup
 set nowritebackup
-set noswapfile
+set directory=~/.vim/swapfiles//
 set updatetime=300
 set noerrorbells
 set visualbell
 set t_vb=
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
@@ -23,19 +28,15 @@ let mapleader = "\<Space>"
 call plug#begin()
 
 Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
+Plug 'preservim/tagbar'
+Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'tpope/vim-commentary'
-
 Plug 'airblade/vim-gitgutter'
 
 call plug#end()
@@ -63,6 +64,9 @@ nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fh :Helptags<CR>
+
+let g:tagbar_autofocus = 1
+nmap <F8> :TagbarToggle<CR>
 
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
