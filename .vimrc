@@ -28,14 +28,13 @@ let mapleader = "\<Space>"
 call plug#begin()
 
 Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
+Plug 'jayli/vim-easycomplete'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 
@@ -43,57 +42,25 @@ call plug#end()
 
 colorscheme moonfly
 
-let NERDTreeShowHidden=1
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
+let g:easycomplete_tabnine_enable = 1
+let g:easycomplete_lsp_checking = 0
+noremap gr :EasyCompleteReference<CR>
+noremap gd :EasyCompleteGotoDefinition<CR>
+noremap rn :EasyCompleteRename<CR>
+noremap gh :EasyCompleteHover<CR>
+noremap gb :BackToOriginalBuffer<CR>
 
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTreeFocus<CR>
+let g:netrw_banner = 0
+map <silent> <leader>dd :Explore<CR>
 
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fh :Helptags<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-s': 'vsplit' }
 
 let g:tagbar_autofocus = 1
 nmap <F8> :TagbarToggle<CR>
-
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-nmap <silent><nowait> gd <Plug>(coc-definition)
-nmap <silent><nowait> gy <Plug>(coc-type-definition)
-nmap <silent><nowait> gi <Plug>(coc-implementation)
-nmap <silent><nowait> gr <Plug>(coc-references)
-nmap <silent><nowait> [g <Plug>(coc-diagnostic-prev)
-nmap <silent><nowait> ]g <Plug>(coc-diagnostic-next)
-nnoremap <silent> <C-d> <Plug>(coc-scroll-down)
-nnoremap <silent> <C-u> <Plug>(coc-scroll-up)
-inoremap <silent><expr> <C-Space> coc#refresh()
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
