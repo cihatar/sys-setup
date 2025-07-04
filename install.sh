@@ -2,9 +2,28 @@
 
 df="$HOME/dotfiles"
 
-vim=".vimrc"
-nvim="init.lua"
-tmux=".tmux.conf"
+vim_conf=".vimrc"
+nvim_conf="init.lua"
+tmux_conf=".tmux.conf"
+
+vim=""
+nvim=""
+tmux=""
+
+if [[ $# -eq 0 ]]; then
+    vim="$vim_conf"
+    nvim="$nvim_conf"
+    tmux="$tmux_conf"
+else
+    for arg in "$@"; do
+        case $arg in
+            "vim") vim="$vim_conf";;
+            "nvim") nvim="$nvim_conf";;
+            "tmux") tmux="$tmux_conf";;  
+            *) echo "entered wrong arguments"; exit 1;;
+        esac
+    done
+fi
 
 install_config() {
     local file="$1"
@@ -43,28 +62,46 @@ if [ ! -d "$df" ]; then
     mkdir -p "$df" 
 fi
 
-install_config "$vim"
-install_config "$nvim"
-install_config "$tmux"
+[[ -n "$vim" ]] && {
+    install_config "$vim"  
+    install_vim_plugin_manager  
+    mkdir -p "$HOME/.vim/swapfiles"  
+    create_link "$df/$vim" "$HOME/$vim"
+}
 
-mkdir -p "$HOME/.config/nvim"
-mkdir -p "$HOME/.vim/swapfiles"
+[[ -n "$nvim" ]] && { 
+    install_config "$nvim"  
+    mkdir -p "$HOME/.config/nvim"  
+    create_link "$df/$nvim" "$HOME/.config/nvim/$nvim"  
+}
 
-install_vim_plugin_manager
-install_tmux_plugin_manager
+[[ -n "$tmux" ]] && { 
+    install_config "$tmux"  
+    install_tmux_plugin_manager 
+    create_link "$df/$tmux" "$HOME/$tmux"
+}
 
-create_link "$df/$vim" "$HOME/$vim"
-create_link "$df/$nvim" "$HOME/.config/nvim/$nvim"
-create_link "$df/$tmux" "$HOME/$tmux"
+read -p "following packages will be installed (y/n)
+   pyright
+   bash-language-server 
+   exuberant-ctags
+   ripgrep
+" confirm
 
-if command -v npm &>/dev/null; then
-    echo "installing npm packages..."
-    sudo npm install -g pyright bash-language-server &>/dev/null
-fi
+if [[ ${confirm,} == "y" ]]; then
+    if command -v npm &>/dev/null; then
+        sudo npm install -g pyright bash-language-server
+    else
+        echo "npm not found"
+    fi
 
-echo "installing exuberant-ctags..."
-if ! dpkg -s exuberant-ctags >/dev/null 2>&1; then
-    sudo apt install -y exuberant-ctags
+    if ! dpkg -s exuberant-ctags >/dev/null 2>&1; then
+        sudo apt install -y exuberant-ctags
+    fi
+
+    if ! dpkg -s ripgrep >/dev/null 2>&1; then
+        sudo apt install -y ripgrep
+    fi
 fi
 
 echo "done"
