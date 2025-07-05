@@ -1,0 +1,34 @@
+Automated System Setup
+=======================
+
+This repo contains an installation script to quickly set up development environment on a fresh Linux machine.
+It comes with custom configuration.
+
+---
+
+Usage:
+
+    ./install.sh [options]
+
+Example:
+
+    ./install.sh vim tmux
+
+Flags:
+
+    -h, --help   show usage help
+
+---
+
+What it does:
+
+- Detects your Linux distro and selects the right package manager.
+- Installs required packages.
+- Sets up config, plugin manager, etc. 
+
+---
+
+Notes:
+
+- This script is personal, use at your own risk.
+- Requires: sudo, curl, git
