@@ -2,14 +2,15 @@ source "${dir}/scripts/install_packages.sh"
 source "${dir}/scripts/install_config.sh"
 
 confirm() {
-    echo "the following packages will be installed"
-    for key in "${!pkgs_dict[@]}"; do
-        for pkgs in ${pkgs_dict[$key]}; do
-            echo -e "${yellow}${pkgs}${nc}"
+    if [ "$yes_flag" = false ]; then
+        local pkgs_str=""
+        for pkg in "${!pkgs_dict[@]}"; do
+            pkgs_str+="$pkg "
         done
-    done
-    read -p "continue? (y/n) " confirm
-    [[ ${confirm,} != "y" ]] && exit 0
+        echo -e "\n${yellow}${pkgs_str}${nc}will be installed"
+        read -p "continue? (y/n) " confirm
+        [[ ${confirm,} != "y" ]] && exit 0
+    fi 
 }
 
 run_installation() {
@@ -17,7 +18,7 @@ run_installation() {
 
     for key in "${!pkgs_dict[@]}"; do
         echo -e "\n${yellow}🛠️ installing $key${nc}" && 
-        pkgs=${pkgs_dict[$key]}
+        local pkgs=${pkgs_dict[$key]}
 
         case "$key" in
             vim) source "${dir}/scripts/setup/vim.sh";;

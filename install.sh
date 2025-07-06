@@ -10,6 +10,7 @@ df="$HOME/dotfiles"
 
 distro=""
 pkg_mgr=""
+yes_flag=false
 
 declare -A pkgs_dict=()
 

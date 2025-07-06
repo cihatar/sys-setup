@@ -5,7 +5,7 @@ detect_distro() {
         exit 1
     else
         distro=$ID
-        echo -e "${green}$distro detected${nc}\n"
+        echo -e "${green}$distro detected${nc}"
     fi
 
     case "$distro" in

@@ -5,6 +5,7 @@ print_help() {
     echo -e "  ${green}nvim${nc}        > install neovim"
     echo -e "  ${green}tmux${nc}        > install tmux"
     echo -e "  ${green}-h, --help${nc}  > help"
+    echo -e "  ${green}-y, --yes${nc}   > skip prompt"
 }
 
 parse_args() {
@@ -15,12 +16,15 @@ parse_args() {
 
     for arg in "$@"; do
         case "$arg" in
+            vim|nvim|tmux)
+                add_packages "$arg"
+                ;;
             -h|--help)
                 print_help
                 exit 0
                 ;;
-            vim|nvim|tmux)
-                add_packages "$arg"
+            -y|--yes)
+                yes_flag=true
                 ;;
             *) 
                 echo -e "${red}invalid argument: '$arg'${nc}" 
