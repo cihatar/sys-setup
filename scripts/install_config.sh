@@ -7,7 +7,7 @@ install_config() {
         echo "copied $file into $df"
     else
         echo "$file not found. pulling from github..."
-        if ! curl -o "$df/$file" https://raw.githubusercontent.com/cihatar/sys-setup/main/$file &>/dev/null; then
+        if ! curl -o "$df/$file" https://raw.githubusercontent.com/cihatar/sys-setup/main/configs/$file &>/dev/null; then
             echo -e "${red}failed to download $file${nc}"
             exit 1
         fi        
