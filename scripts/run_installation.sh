@@ -1,5 +1,5 @@
-source "./scripts/install_packages.sh"
-source "./scripts/install_config.sh"
+source "${dir}/scripts/install_packages.sh"
+source "${dir}/scripts/install_config.sh"
 
 confirm() {
     echo "the following packages will be installed"
@@ -20,9 +20,9 @@ run_installation() {
         pkgs=${pkgs_dict[$key]}
 
         case "$key" in
-            vim) source "./scripts/setup/vim.sh";;
-            nvim) source "./scripts/setup/nvim.sh";; 
-            tmux) source "./scripts/setup/tmux.sh";;
+            vim) source "${dir}/scripts/setup/vim.sh";;
+            nvim) source "${dir}/scripts/setup/nvim.sh";; 
+            tmux) source "${dir}/scripts/setup/tmux.sh";;
         esac
         echo -e "${green}${key} installed${nc}" 
     done

@@ -13,11 +13,13 @@ pkg_mgr=""
 
 declare -A pkgs_dict=()
 
-source "./scripts/parse_args.sh"
-source "./scripts/add_packages.sh"
-source "./scripts/detect_distro.sh"
-source "./scripts/run_installation.sh"
-source "./scripts/ascii.sh"
+dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+source "${dir}/scripts/parse_args.sh"
+source "${dir}/scripts/add_packages.sh"
+source "${dir}/scripts/detect_distro.sh"
+source "${dir}/scripts/run_installation.sh"
+source "${dir}/scripts/ascii.sh"
 
 parse_args "$@"
 add_packages 
