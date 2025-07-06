@@ -17,6 +17,7 @@ Example:
 Flags:
 
     -h, --help   show usage help
+    -y, --yes    skip prompt
 
 ---
 
