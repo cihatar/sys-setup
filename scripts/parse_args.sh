@@ -9,9 +9,10 @@ print_help() {
 }
 
 parse_args() {
-    if [ $# -eq 0 ]; then
-        echo -e "${yellow}missing arguments, use --help flag${nc}"
-        exit 1
+    if [ $# -eq 0 ] || { 
+        [ $# -eq 1 ] && { [[ "$1" == "-y" ]] || [[ "$1" == "--yes" ]]; }; 
+    }; then
+        set -- $@ "vim" "nvim" "tmux"
     fi
 
     for arg in "$@"; do
