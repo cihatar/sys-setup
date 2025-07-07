@@ -12,18 +12,19 @@ distro=""
 pkg_mgr=""
 yes_flag=false
 
-declare -A pkgs_dict=()
+declare -A packages
+declare -A packages_to_install
 
 dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
+source "${dir}/scripts/get_packages.sh"
 source "${dir}/scripts/parse_args.sh"
-source "${dir}/scripts/add_packages.sh"
 source "${dir}/scripts/detect_distro.sh"
 source "${dir}/scripts/run_installation.sh"
 source "${dir}/scripts/ascii.sh"
 
+get_packages
 parse_args "$@"
-add_packages 
 detect_distro 
 run_installation
 ascii

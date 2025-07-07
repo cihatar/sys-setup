@@ -1,0 +1,3 @@
+vim=vim universal-ctags ripgrep
+nvim=npm
+tmux=tmux
