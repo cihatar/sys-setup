@@ -1,5 +1,5 @@
 install_packages() {
-    for pkg in "$@"; do
+    for pkg in $pkgs; do
         case "$pkg_mgr" in
             apt)
                 if sudo apt-get install -y "$pkg" >/dev/null 2>&1; then

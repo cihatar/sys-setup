@@ -1,5 +1,4 @@
 source "${dir}/scripts/install_packages.sh"
-source "${dir}/scripts/install_config.sh"
 
 confirm() {
     if [ "$yes_flag" = false ]; then
