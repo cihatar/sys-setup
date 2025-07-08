@@ -1,27 +1,5 @@
 ascii() {
-    echo -e "
-    ⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⣤⣶⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⣀⣴⠟⣉⣙⣟⣛⢻⡟⠿⢿⣷⠀⠀⠀⠀⢰⣃⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⢀⣾⡟⠛⠛⠻⠿⠿⠿⣿⣿⠷⠦⠘⣧⠀⢀⠄⡶⠁⠀⠀⠀⠀⠀ ${green}${bold}done champ${nc}
-    ⠀⢀⣾⣿⣧⣶⣿⣤⠀⠀⣴⣹⠏⠀⠀⠀⠿⣧⢈⣞⣀⡤⠚⢿⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⢸⣿⣿⣿⣿⣿⣿⣿⣶⠻⣿⣿⠷⠟⠃⣿⣏⠀⠀⠀⠀⢀⣼⣤⣿⣾⡍⠲⣤⡀⠀
-    ⠀⠈⢻⣿⣿⣿⣿⡿⢿⣿⢿⣿⡇⠀⠀⡿⢟⡉⠑⡄⠀⠀⠀⠉⢩⣽⡷⣿⣿⣯⣹⣆
-    ⠀⠀⠀⢻⣿⣿⣿⠷⢻⢿⠀⠀⠀⠀⠀⡀⠙⣷⡎⠁⠀⠀⠀⠀⠈⢙⡇⣿⣿⣹⢁⡿
-    ⠀⠀⠀⠈⡿⠟⠙⠢⣟⠟⠀⠀⠀⠀⠈⠴⣿⣿⠁⠀⠀⠀⠀⠀⠾⢿⢁⣼⠛⠳⣀⡇
-    ⠀⠀⣀⣼⣷⣦⣄⡀⠈⢻⣷⣄⣀⣠⣴⣾⡋⣈⡆⠀⠀⠀⠀⠀⢠⡇⠀⠹⡇⣴⠟⠑
-    ⢰⣿⣿⣿⣿⣿⣿⣿⣶⣤⡀⠉⢿⣿⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⣿⡇⠀⢠⡿⠋⠀⠀
-    ⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣬⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢿⡇⠀⠀⠀
-    ⠀⠙⠿⣿⡛⠿⢿⢉⣻⣿⣿⣿⣿⣿⣿⣿⣷⣆⠀⠀⠀⠀⠀⢰⡟⠉⠉⠛⢧⣀⠀⠀
-    ⠀⠀⠀⠙⠻⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⢹⣿⣿⣿⣿⣶⣤⣽⣄
-    ⠀⠀⠀⠀⠀⠙⢿⣿⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿
-    ⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⢹⣿⣿⣿⣽⣿⣿⣿⡇
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣟⣛⡛⣿⣿⣿⡇
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠟⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠿⠿⣿⠿⠟⠋⠀⠀⠀
-    "
+    echo
+    base64 -d <<< "ICAgICAgICAgX25ubm5fICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgIGRHR0dHTU1iICAgICAsIiIiIiIiIiIiIiIiIiIuCiAgICAgICBAcH5xcH5+cU1iICAgIHwgICBBbGwgRG9uZSAgIHwKICAgICAgIE18QHx8QCkgTXwgICBfOy4uLi4uLi4uLi4uLi4uJwogICAgICAgQCwtLS0tLkpNfCAtJwogICAgICBKU15cX18vICBxS0wKICAgICBkWlAgICAgICAgIHFLUmIKICAgIGRaUCAgICAgICAgICBxS0tiCiAgIGZaUCAgICAgICAgICAgIFNNTWIKICAgSFpNICAgICAgICAgICAgTU1NTQogICBGcU0gICAgICAgICAgICBNTU1NCiBfX3wgIi4gICAgICAgIHxcZFMicU1MCiB8ICAgIGAuICAgICAgIHwgYCcgXFpxCl8pICAgICAgXC5fX18uLHwgICAgIC4nClxfX19fICAgKU1NTU1NTXwgICAuJwogICAgIGAtJyAgICAgICBgLS0nIA=="
+    echo
 }
