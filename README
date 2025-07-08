@@ -30,10 +30,10 @@ What it does:
 
 How to add installation script:
 
-- Add your package name and its dependencies to the 'packages.txt' file. (example: vim=vim-gtk3)
+- Add your package information to the 'packages.txt' using the format: '<your-package-name>=<required-package-1> <required-package-2> ...'
 - Create a bash script named after your package in the '/scripts/setup/' directory.
-- Inside the script, use 'install_packages' function to install dependencies and write your installation logic.
-- Run the installation with './install.sh <your package name>'
+- Inside the script, use 'install_packages' function to install the required packages and write your installation or configuration logic.
+- Run with './install.sh <your-package-name>'
 
 ---
 
