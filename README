@@ -2,7 +2,6 @@ Automated System Setup
 =======================
 
 This repo contains an installation script to quickly set up development environment on a fresh Linux machine.
-It comes with custom configuration.
 
 ---
 
@@ -29,7 +28,13 @@ What it does:
 
 ---
 
-Notes:
+How to add installation script:
 
-- This script is personal, use at your own risk.
-- Requires: sudo, curl, git
+- Add your package name and its dependencies to the 'packages.txt' file. (example: vim=vim-gtk3)
+- Create a bash script named after your package in the '/scripts/setup/' directory.
+- Inside the script, use 'install_packages' function to install dependencies and write your installation logic.
+- Run the installation with './install.sh <your package name>'
+
+---
+
+Note: This script is personal and includes custom configuration. Use at your own risk.
