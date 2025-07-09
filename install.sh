@@ -6,8 +6,6 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 bold='\033[1m'
 
-df="$HOME/dotfiles"
-
 distro=""
 pkg_mgr=""
 yes_flag=false
@@ -17,6 +15,7 @@ declare -A packages_to_install
 
 dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
+[ -f "${dir}/.env" ] && source "${dir}/.env"
 source "${dir}/scripts/get_packages.sh"
 source "${dir}/scripts/parse_args.sh"
 source "${dir}/scripts/detect_distro.sh"
